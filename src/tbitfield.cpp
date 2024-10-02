@@ -130,7 +130,7 @@ int TBitField::operator!=(const TBitField& bf) const // сравнение
 
 TBitField TBitField::operator|(const TBitField& bf) // операция "или"
 {
-    int max_len = std::max(MemLen, bf.MemLen);
+    int max_len = std::max(BitLen, bf.BitLen);
     TBitField res(max_len);
     if (MemLen > bf.MemLen) {
         for (int i = 0; i < bf.MemLen; i++) {
