@@ -343,3 +343,20 @@ TEST(TBitField, can_do_OR_correctly) {
     EXPECT_EQ(bf3, res1);
     EXPECT_EQ(bf3, res2);
 }
+
+TEST(TBitField, can_set_33_bits_in_70_bit_field) {
+    const int size = 70;
+    TBitField bf(size);  
+
+    for (int i = 0; i < 33; ++i) {
+        bf.SetBit(i);
+    }
+
+    for (int i = 0; i < 33; ++i) {
+        EXPECT_EQ(1, bf.GetBit(i)) << "Failed to set bit at index " << i;
+    }
+
+    for (int i = 33; i < size; ++i) {
+        EXPECT_EQ(0, bf.GetBit(i)) << "Unexpected set bit at index " << i;
+    }
+}
